@@ -67,7 +67,7 @@ angular.module('socketDemo', ['ngRoute'])
 
       if(coordinateArray.length === 4){
 
-        var clear = $('.opponentBrickNow').addClass('brick').removeClass('opponentBrickNow');
+        var clear = $('.opponentBrickNow').removeClass('opponentBrickNow');
         // console.log(filledBricks);
 
         clear.promise().done(function() {
