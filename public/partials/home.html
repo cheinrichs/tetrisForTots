@@ -1,17 +1,16 @@
-<h1>Home</h1>
+<form ng-submit="chat()">
+  <label for="un">Username</label>
+  <input type="text" name="un" ng-model="Username">
+  <label for="message" for="msg">Message</label>
+  <input type="text" name="msg" ng-model="Message">
+  <!-- <select name="" id=""></select> -->
+  <input type="submit">
+</form>
 
-<p>
-  <button class="btn btn-primary" ng-click="self()">socket.emit</button>
-</p>
 
-<p>
-  <button class="btn btn-primary" ng-click="all()">io.sockets.emit</button>
-</p>
-
-<p>
-  <button class="btn btn-primary" ng-click="broadcast()">socket.broadcast.emit</button>
-</p>
-
-<div ng-repeat="message in messages track by $index">
-  {{message}}
+<div class="opponent">
+  oppponent moves:
+  <div ng-repeat="message in messages track by $index">
+    {{message}}
+  </div>
 </div>
