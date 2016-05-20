@@ -26,3 +26,11 @@
   top: 100px;
   left: 500px;
 }
+
+.oppponentBrickNow {
+  width: 11px;
+  height: 11px;
+  border: solid 1px white;
+  background: blue;
+  float: left;
+}

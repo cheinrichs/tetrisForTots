@@ -56,7 +56,10 @@ angular.module('socketDemo', ['ngRoute'])
     // when the _server_ sends a message
     // we'll add that message to our $scope.messages array
     socket.on('message', function (data) {
-      $scope.messages.push(data);
+      console.log(data);
+
+      document.querySelector('[opponent-y="'+data.y+'"] [opponent-x="'+data.x+'"]').className = "oppponentBrickNow"
+      // $scope.messages.push(data);
 
       // use $scope.apply in order to make sure the view is updated
       // even though this event was fired outside of Angular's digest
