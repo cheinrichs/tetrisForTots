@@ -14,6 +14,7 @@ angular.module('socketDemo', ['ngRoute'])
     // io is a global object given to you by /socket.io/socket.io.js
     var socket = io();
     var coordinateArray = [];
+
     $scope.messages = [];
 
     $document.bind('keydown', function (e) {
@@ -57,26 +58,40 @@ angular.module('socketDemo', ['ngRoute'])
     // when the _server_ sends a message
     // we'll add that message to our $scope.messages array
     socket.on('message', function (data) {
-
-      if(coordinateArray.length >= 4){
-        coordinateArray = [];
-      }
-
-      coordinateArray.push(data);
-
-      if(coordinateArray.length == 4){
-        // for (var i = 0; i < coordinateArray.length; i++) {
-        //   document.querySelectorAll('.now').classList.remove('opponentBrickNow');
-        // }
-        for (var i = 0; i < coordinateArray.length; i++) {
-          document.querySelector('[opponent-y="'+coordinateArray[i].y+'"] [opponent-x="'+coordinateArray[i].x+'"]').className = "opponentBrickNow";
+      
+      var alreadyAdded = false
+      for (var i = 0; i < coordinateArray.length; i++) {
+        if(coordinateArray[i].x == data.x && coordinateArray[i].y == data.y){
+          alreadyAdded = true;
         }
       }
-      // $scope.messages.push(data);
+      if(!alreadyAdded){
+        coordinateArray.push(data);
+      }
 
-      // use $scope.apply in order to make sure the view is updated
-      // even though this event was fired outside of Angular's digest
-      $scope.$apply();
+      if(coordinateArray.length === 4){
+
+        var clear = $('.opponentBrickNow').removeClass('opponentBrickNow');
+
+        // console.log(coordinateArray);
+
+        clear.promise().done(function() {
+          coordinateArray.forEach(function (element) {
+            // console.log("y " + coordinateArray[i].y);
+            // console.log("x " + coordinateArray[i].x);
+            // document.querySelector('[opponent-y="'+coordinateArray[i].y+'"] [opponent-x="'+coordinateArray[i].x+'"]').className = "opponentBrickNow";
+            // console.log(element.x,element.y);
+            var oppBrick = $('div[opponent-y=' + element.y + '] div[opponent-x=' + element.x + ']');
+            // console.log('before',oppBrick.hasClass('opponentBrickNow'));
+            oppBrick.addClass('opponentBrickNow');
+            // console.log('after',oppBrick.hasClass('opponentBrickNow'));
+
+          })
+          coordinateArray = [];
+        })
+
+      }
+
     })
 
     // $scope.self = function () {
