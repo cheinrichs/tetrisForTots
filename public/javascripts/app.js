@@ -13,6 +13,7 @@ angular.module('socketDemo', ['ngRoute'])
 
     // io is a global object given to you by /socket.io/socket.io.js
     var socket = io();
+    var coordinateArray = [];
     $scope.messages = [];
 
     $document.bind('keydown', function (e) {
@@ -56,9 +57,21 @@ angular.module('socketDemo', ['ngRoute'])
     // when the _server_ sends a message
     // we'll add that message to our $scope.messages array
     socket.on('message', function (data) {
-      console.log(data);
 
-      document.querySelector('[opponent-y="'+data.y+'"] [opponent-x="'+data.x+'"]').className = "oppponentBrickNow";
+      if(coordinateArray.length >= 4){
+        coordinateArray = [];
+      }
+
+      coordinateArray.push(data);
+
+      if(coordinateArray.length == 4){
+        // for (var i = 0; i < coordinateArray.length; i++) {
+        //   document.querySelectorAll('.now').classList.remove('opponentBrickNow');
+        // }
+        for (var i = 0; i < coordinateArray.length; i++) {
+          document.querySelector('[opponent-y="'+coordinateArray[i].y+'"] [opponent-x="'+coordinateArray[i].x+'"]').className = "opponentBrickNow";
+        }
+      }
       // $scope.messages.push(data);
 
       // use $scope.apply in order to make sure the view is updated
@@ -105,7 +118,6 @@ angular.module('socketDemo', ['ngRoute'])
 
     var fs = "1111:01|01|01|01*011|110:010|011|001*110|011:001|011|010*111|010:01|11|01:010|111:10|11|10*11|11*010|010|011:111|100:11|01|01:001|111*01|01|11:100|111:11|10|10:111|001", now = [3,0], pos = [4,0];
     var gP = function(x,y) {
-      console.log(x,y);
       $scope.updateOpponent(x,y);
       return document.querySelector('[data-y="'+y+'"] [data-x="'+x+'"]');
     };
