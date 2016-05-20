@@ -58,7 +58,7 @@ angular.module('socketDemo', ['ngRoute'])
     socket.on('message', function (data) {
       console.log(data);
 
-      document.querySelector('[opponent-y="'+data.y+'"] [opponent-x="'+data.x+'"]').className = "oppponentBrickNow"
+      document.querySelector('[opponent-y="'+data.y+'"] [opponent-x="'+data.x+'"]').className = "oppponentBrickNow";
       // $scope.messages.push(data);
 
       // use $scope.apply in order to make sure the view is updated
