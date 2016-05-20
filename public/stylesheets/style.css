@@ -1,7 +1,109 @@
+  *{
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    /*box-sizing: border-box;*/
+  }
+#container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /*justify-content: space-between;*/
+}
+header{
+  background-color: #eee;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  /*align-self: flex-start;*/
+}
+footer{
+  background-color: #eee;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  /*align-self: flex-end;*/
+}
+#main{
+  background-color: #AF12B2;
+  flex-grow: 1;
+  /*align-self: center;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+.playerColumn{
+  flex-grow: 1;
+  margin: 10px;
+  padding: 10px;
+  background-color: #09B295;
+  height: 100%;
+  /*width: 100%;*/
+  display: flex;
+  flex-direction: column;
+}
+#gameplay{
+  flex-grow: 2;
+  min-width: 500px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #09B295;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.avatar{
+  /*background-color: #FFCC19;*/
+  height: 100%;
+  width: 100%;
+  align-self: center;
+}
+.charityDescription p{
+  width: 300px;
+  overflow: scroll;
+}
+#gameplayUpper{
+  height: 300px;
+  width: 100%;
+  padding: 10px;
+  background-color: #F900FF;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.score {
+  text-align: center;
+}
+.gameboard{
+  height: 300px;
+  width: 130px;
+  background-color: white;
+  box-sizing: none;
+}
+#gameplayLower{
+  /*height: 45vh;*/
+  /*max-height: 45vh;*/
+  padding: 10px;
+  width: 100%;
+  background-color: #F900FF;
+  box-sizing: border-box;
+}
+#heroes {
+  max-height: 45vh;
+}
+img{
+  width: 100%;
+  overflow: hidden;
+}
+
 #stack {
     width: 130px;
     height: 260px;
-    border: solid 1px black;
+    border-bottom: solid 1px black;
     border-top: 0px;
 }
 

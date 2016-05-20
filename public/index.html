@@ -10,504 +10,532 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <base href="/" />
   </head>
 
   <body>
-
-    <h1>Tetris fo Tots</h1>
-
-    <div class="score">score: <span id="result">0</span></div>
-
-    <div id="stack">
-     <div data-y="0" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="1" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="2" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="3" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="4" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="5" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="6" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="7" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="8" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="9" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="10" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="11" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="12" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="13" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="14" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="15" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="16" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="17" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="18" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-     <div data-y="19" class="line">
-       <div data-x="0" class="brick"></div>
-       <div data-x="1" class="brick"></div>
-       <div data-x="2" class="brick"></div>
-       <div data-x="3" class="brick"></div>
-       <div data-x="4" class="brick"></div>
-       <div data-x="5" class="brick"></div>
-       <div data-x="6" class="brick"></div>
-       <div data-x="7" class="brick"></div>
-       <div data-x="8" class="brick"></div>
-       <div data-x="9" class="brick"></div>
-     </div>
-   </div>
-
-   <div id="stack">
-     <div opponent-y="0" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="1" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="2" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="3" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="4" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="5" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="6" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="7" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="8" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="9" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="10" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="11" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="12" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="13" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="14" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="15" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="16" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="17" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="18" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-     <div opponent-y="19" class="line">
-       <div opponent-x="0" class="brick"></div>
-       <div opponent-x="1" class="brick"></div>
-       <div opponent-x="2" class="brick"></div>
-       <div opponent-x="3" class="brick"></div>
-       <div opponent-x="4" class="brick"></div>
-       <div opponent-x="5" class="brick"></div>
-       <div opponent-x="6" class="brick"></div>
-       <div opponent-x="7" class="brick"></div>
-       <div opponent-x="8" class="brick"></div>
-       <div opponent-x="9" class="brick"></div>
-     </div>
-   </div>
-
-
-      <ng-view></ng-view>
-
-  </div>
-</body>
+    <div id="container">
+      <header><h1>Tetris 4 Tots</h1></header>
+      <div id="main">
+        <div class="playerColumn" id="player1">
+          <div class="avatar" id="player1avatar"><img src="player1.gif" alt=""></div>
+          <div class="username" id="player1name">
+            <ng-view></ng-view>
+          </div>
+          <!-- <div class="charityName" id="player1charity">Toys for Tots</div> -->
+          <div class="charityLogo" id="player1cLogo"><img src="toys-for-tots-logo.gif" alt=""></div>
+          <div class="charityDescription" id="player1cDescription"><p>The mission of Toys for Tots is to collect new toys during October, November, and December to deliver a Christmas present to underprivileged children in the local community. Toys for Tots brings together the community during the holiday season through their collection and distribution campaign. Local coordinators hold events throughout the year to raise awareness and donations. www.toysfortots.org</p></div>
+        </div>
+        <div id="gameplay">
+          <div id="gameplayUpper">
+            <div class="gameboard">
+              <div id="stack">
+               <div data-y="0" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="1" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="2" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="3" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="4" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="5" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="6" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="7" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="8" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="9" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="10" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="11" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="12" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="13" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="14" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="15" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="16" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="17" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="18" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+               <div data-y="19" class="line">
+                 <div data-x="0" class="brick"></div>
+                 <div data-x="1" class="brick"></div>
+                 <div data-x="2" class="brick"></div>
+                 <div data-x="3" class="brick"></div>
+                 <div data-x="4" class="brick"></div>
+                 <div data-x="5" class="brick"></div>
+                 <div data-x="6" class="brick"></div>
+                 <div data-x="7" class="brick"></div>
+                 <div data-x="8" class="brick"></div>
+                 <div data-x="9" class="brick"></div>
+               </div>
+             </div>
+              <div class="score" id="player1Score">score: <span id="result">0</span></div>
+            </div>
+            <div id="wager">$0.25</div>
+            <div class="gameboard">
+              <div id="stack">
+                <div opponent-y="0" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="1" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="2" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="3" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="4" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="5" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="6" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="7" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="8" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="9" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="10" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="11" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="12" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="13" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="14" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="15" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="16" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="17" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="18" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+                <div opponent-y="19" class="line">
+                  <div opponent-x="0" class="brick"></div>
+                  <div opponent-x="1" class="brick"></div>
+                  <div opponent-x="2" class="brick"></div>
+                  <div opponent-x="3" class="brick"></div>
+                  <div opponent-x="4" class="brick"></div>
+                  <div opponent-x="5" class="brick"></div>
+                  <div opponent-x="6" class="brick"></div>
+                  <div opponent-x="7" class="brick"></div>
+                  <div opponent-x="8" class="brick"></div>
+                  <div opponent-x="9" class="brick"></div>
+                </div>
+              </div>
+              <div class="score" id="player2Score">score: <span id="result">0</span></div>
+            </div>
+          </div>
+          <div id="gameplayLower">
+            <img src="maxresdefault.jpg" id="heroes">
+          </div>
+        </div>
+        <section class="playerColumn" id="player2">
+          <div class="avatar" id="player2avatar"><img src="player2.gif" alt=""></div>
+          <div class="username" id="player2name">
+            <ng-view></ng-view>
+          </div>
+          <!-- <div class="charityName" id="player2charity">Children's Health Fund</div> -->
+          <div class="charityLogo" id="player2cLogo"><img src="child-health-fund.jpg" alt=""></div>
+          <div class="charityDescription" id="player2cDescription"><p>Children's Health Fund helps America's most disadvantaged children gain access to quality health care. They provide pediatric health care programs in poor rural and urban communities. Children's Health also advocates on behalf of expanding health care and insurance for children. www.childrenshealthfund.org</p></div>
+        </section>
+      </div>
+      <footer></footer>
+    </div>
+  </body>
 </html>
