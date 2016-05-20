@@ -58,7 +58,7 @@ angular.module('socketDemo', ['ngRoute'])
     // when the _server_ sends a message
     // we'll add that message to our $scope.messages array
     socket.on('message', function (data) {
-      
+
       var alreadyAdded = false
       for (var i = 0; i < coordinateArray.length; i++) {
         if(coordinateArray[i].x == data.x && coordinateArray[i].y == data.y){
