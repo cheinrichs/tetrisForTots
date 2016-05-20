@@ -58,25 +58,34 @@ angular.module('socketDemo', ['ngRoute'])
     // we'll add that message to our $scope.messages array
     socket.on('message', function (data) {
 
-      if(coordinateArray.length >= 4){
-        coordinateArray = [];
-      }
-
+      // if(coordinateArray.length >= 4){
+      //   coordinateArray = [];
+      // }
       coordinateArray.push(data);
 
-      if(coordinateArray.length == 4){
-        // for (var i = 0; i < coordinateArray.length; i++) {
-        //   document.querySelectorAll('.now').classList.remove('opponentBrickNow');
-        // }
-        for (var i = 0; i < coordinateArray.length; i++) {
-          document.querySelector('[opponent-y="'+coordinateArray[i].y+'"] [opponent-x="'+coordinateArray[i].x+'"]').className = "opponentBrickNow";
-        }
+      // console.log(coordinateArray);
+
+      if(coordinateArray.length === 4){
+
+        var clear = $('.opponentBrickNow').addClass('brick').removeClass('opponentBrickNow');
+        // console.log(filledBricks);
+
+        clear.promise().done(function() {
+          console.log('cleared');
+          for (var i = 0; i < coordinateArray.length; i++) {
+            document.querySelector('[opponent-y="'+coordinateArray[i].y+'"] [opponent-x="'+coordinateArray[i].x+'"]').className = "opponentBrickNow";
+            console.log('brick')
+          }
+          coordinateArray = [];
+        })
+
+
+
       }
       // $scope.messages.push(data);
 
       // use $scope.apply in order to make sure the view is updated
       // even though this event was fired outside of Angular's digest
-      $scope.$apply();
     })
 
     // $scope.self = function () {
